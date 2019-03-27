@@ -1,17 +1,21 @@
 ---
 server:
   port: 8000
-  servlet:    context-path: / #该配置可以删除,默认就是/
+  servlet:
+    context-path: / #该配置可以删除,默认就是/
 spring:
   profiles: prod
   
   datasource:
     #引入druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/jtdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     username: root
     password: root
-  application:     name: provider-user  #定义服务名称 ,如果是多个相同的服务，名称必须相同，才可以负载均衡  
+  application: 
+    name: provider-user  #定义服务名称 ,如果是多个相同的服务，名称必须相同，才可以负载均衡
+  
     
     
 eureka:
@@ -30,7 +34,8 @@ mybatis-plus:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   #开启驼峰映射
   configuration:
-    map-underscore-to-camel-case: true  #自动开启驼峰规则映射  
+    map-underscore-to-camel-case: true  #自动开启驼峰规则映射
+  
   
 ---
 server:
@@ -48,14 +53,15 @@ spring:
     username: root
     password: root
   application: 
-    name: provider-user  #定义服务名称 ,如果是多个相同的服务，名称必须相同，才可以负载均衡  
+    name: provider-user  #定义服务名称 ,如果是多个相同的服务，名称必须相同，才可以负载均衡
+  
     
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7000/eureka
   instance:
-    instance-id: provider-user-8000                 #定义微服务的名称
+    instance-id: provider-user-8005                 #定义微服务的名称
     prefer-ip-address: true                        #是否显示IP和端口
     
     
